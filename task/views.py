@@ -1,11 +1,15 @@
-from django.shortcuts import render 
-from rest_framework import generics
-from . Serializers import SlackModelSerializer
-from .models import SlackModel
+from django.shortcuts import render
+from django.http import JsonResponse
 
-class IndexView(generics.CreateAPIView):
-    serializer_class = SlackModelSerializer
+# Create your views here.
 
-class ListView(generics.ListAPIView):
-    queryset = SlackModel.objects.all()
-    serializer_class = SlackModelSerializer 
+db = {
+    "slackUsername":"ahmaad",
+    "age":25,
+    "bio":"web developer",
+    "backend":True
+}
+
+
+def home(request):
+    return JsonResponse(db)
